@@ -188,9 +188,9 @@ function __construct() {
 	{
 		$this->db->select('p.permohonan_id,p.judul,p.tanggal,b.file,b.koordinat_lat,b.koordinat_long,b.kecamatan,b.kelurahan,u.name,d.nama_dinas');
 		$this->db->from('Permohonan p');
-		$this->db->join('Berkas b', 'Permohonan.permohonan_id = Berkas.permohonan_id', 'INNER');
-		$this->db->join('User u', 'User.user_id = Permohonan.uploadby', 'INNER');
-		$this->db->join('Dinas d', 'User.dinas_id = Dinas.dinas_id', 'INNER');
+		$this->db->join('Berkas b', 'p.permohonan_id = b.permohonan_id', 'INNER');
+		$this->db->join('User u', 'u.user_id = p.uploadby', 'LEFT');
+		$this->db->join('Dinas d', 'u.dinas_id = d.dinas_id', 'LEFT');
 		$q = $this->db->get();
 		$response = $this->returnResult($q);
 		return var_dump($this->db->last_query());
@@ -214,10 +214,10 @@ function __construct() {
 	{
 		$this->db->select('p.judul,p.tanggal,b.file,b.koordinat_lat,b.koordinat_long,u.name,d.nama_dinas');
 		$this->db->from('Permohonan p');
-		$this->db->join('Berkas b', 'Permohonan.permohonan_id = Berkas.permohonan_id', 'INNER');
-		$this->db->join('User u', 'User.user_id = Permohonan.uploadby', 'INNER');
-		$this->db->join('Dinas d', 'User.dinas_id = Dinas.dinas_id', 'INNER');
-		$this->db->where('Permohonan.permohonan_id', $this->input->post('id'));
+		$this->db->join('Berkas b', 'p.permohonan_id = b.permohonan_id', 'INNER');
+		$this->db->join('User u', 'u.user_id = p.uploadby', 'INNER');
+		$this->db->join('Dinas d', 'u.dinas_id = d.dinas_id', 'INNER');
+		$this->db->where('p.permohonan_id', $this->input->post('id'));
 		$q = $this->db->get();
 		return $q;
 	}
