@@ -193,7 +193,7 @@ function __construct() {
 		$this->db->join('Dinas d', 'u.dinas_id = d.dinas_id', 'LEFT');
 		$q = $this->db->get();
 		$response = $this->returnResult($q);
-		return var_dump($this->db->last_query());
+		// return var_dump($this->db->last_query());
 		echo json_encode($response);
 	}
 	function getDataByid()
