@@ -193,6 +193,7 @@ function __construct() {
 		$this->db->join('Dinas d', 'User.dinas_id = Dinas.dinas_id', 'INNER');
 		$q = $this->db->get();
 		$response = $this->returnResult($q);
+		return var_dump($this->db->last_query());
 		echo json_encode($response);
 	}
 	function getDataByid()
