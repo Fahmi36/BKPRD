@@ -7,6 +7,7 @@ header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
 header('Access-Control-Max-Age: 1000');
 header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
 
+class Welcome extends CI_Controller {
 function __construct() {
 	parent::__construct();
 	header('Access-Control-Allow-Origin:*');
@@ -14,11 +15,7 @@ function __construct() {
 	header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
 	header('Access-Control-Max-Age: 1000');
 	header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
-
-	$this->load->model('PerizinanModel', 'perm');
 }
-class Welcome extends CI_Controller {
-
 	/**
 	 * Index Page for this controller.
 	 *
